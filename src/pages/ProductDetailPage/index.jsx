@@ -1,4 +1,3 @@
-// fake-api-store/src/pages/ProductDetailPage/index.jsx
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ShoppingCartContext } from "../../contexts";
@@ -11,7 +10,6 @@ function ProductDetailPage() {
     filteredItems,
   } = useContext(ShoppingCartContext);
 
-  // Find the product based on the ID in the URL
   useEffect(() => {
     const product = filteredItems.find((item) => item.id === parseInt(id));
     setProductToShow(product);

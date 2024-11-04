@@ -11,7 +11,6 @@ function SignIn() {
 
   const handleSignIn = () => {
     saveSignOut(false);
-    // Redirect
     return <Navigate replace to={"/"} />;
   };
 
@@ -22,9 +21,7 @@ function SignIn() {
       email: formData.get("email"),
       password: formData.get("password"),
     };
-    // Create account
     saveAccount(data);
-    // Sign In
     handleSignIn();
   };
 
@@ -120,7 +117,7 @@ function SignIn() {
   return (
     <>
       <h1 className="font-medium text-xl text-center mb-6 w-80">
-        Welcome to Shopi
+        Welcome to Fake API Store
       </h1>
       {renderView()}
     </>
