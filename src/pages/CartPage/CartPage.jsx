@@ -1,20 +1,18 @@
 import { useContext } from "react";
-import { ShoppingCartContext } from "../../contexts";
+import { ShoppingCartContext } from "../../contexts/Contexts";
 import { OrderCard } from "../../components/OrderCard";
-import { totalPrice } from "../../utils";
+import { totalPrice } from "../../utils/index.js";
 import { Link } from "react-router-dom";
+import "./CartPage.css";
 
 const CartPage = () => {
-  const {
-    cartProducts,
-    setCartProducts,
-    order,
-    setOrder,
-    setSearchByTitle,
-  } = useContext(ShoppingCartContext);
+  const { cartProducts, setCartProducts, order, setOrder, setSearchByTitle } =
+    useContext(ShoppingCartContext);
 
   const handleDelete = (id) => {
-    const filteredProducts = cartProducts.filter((product) => product.id !== id);
+    const filteredProducts = cartProducts.filter(
+      (product) => product.id !== id
+    );
     setCartProducts(filteredProducts);
   };
 
@@ -27,17 +25,17 @@ const CartPage = () => {
     };
     setOrder([...order, orderToAdd]);
     setCartProducts([]);
-    setSearchByTitle('');
+    setSearchByTitle("");
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-semibold mb-6">My Cart</h2>
+    <div className="cart-page-container">
+      <h2 className="cart-page-title">My Cart</h2>
       {cartProducts.length === 0 ? (
-        <p>Your cart is empty</p>
+        <p className="empty-cart-message">Your cart is empty</p>
       ) : (
         <>
-          <div className="flex flex-col gap-4 mb-6">
+          <div className="cart-products-container">
             {cartProducts.map((product) => (
               <OrderCard
                 key={product.id}
@@ -49,14 +47,13 @@ const CartPage = () => {
               />
             ))}
           </div>
-          <div className="flex justify-between items-center mb-4">
-            <span className="text-lg font-medium">Total: ${totalPrice(cartProducts)}</span>
+          <div className="cart-summary">
+            <span className="cart-total">
+              Total: ${totalPrice(cartProducts)}
+            </span>
           </div>
           <Link to="/my-orders/last">
-            <button
-              className="bg-black text-white py-2 px-4 rounded"
-              onClick={handleCheckout}
-            >
+            <button className="checkout-button" onClick={handleCheckout}>
               Checkout
             </button>
           </Link>

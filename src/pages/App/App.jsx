@@ -1,16 +1,19 @@
 import { useContext } from "react";
 import { useRoutes, BrowserRouter, Navigate } from "react-router-dom";
-import { ShoppingCartContext, ShoppingCartProvider } from "../../contexts";
+import {
+  ShoppingCartContext,
+  ShoppingCartProvider,
+} from "../../contexts/Contexts";
 
-import { Home } from "../Home";
-import { MyAccount } from "../MyAccount";
-import { MyOrders } from "../MyOrders";
-import { MyOrder } from "../MyOrder";
-import { SignIn } from "../SignIn";
-import { NotFound } from "../NotFound";
+import { Home } from "../Home/Home";
+import { MyAccount } from "../MyAccount/MyAccount";
+import { MyOrders } from "../MyOrders/MyOrders";
+import { MyOrder } from "../MyOrder/MyOrder";
+import { SignIn } from "../SignIn/SignIn";
+import { NotFound } from "../NotFound/NotFound";
 import { Navbar } from "../../components/NavBar";
-import { ProductDetailPage } from "../ProductDetailPage";
-import { CartPage } from "../CartPage";
+import { ProductDetailPage } from "../ProductDetailPage/ProductDetailPage";
+import { CartPage } from "../CartPage/CartPage";
 
 const AppRoutes = () => {
   const { account, signOut } = useContext(ShoppingCartContext);

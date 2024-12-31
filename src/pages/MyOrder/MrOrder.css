@@ -1,0 +1,37 @@
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 20rem;
+  margin-bottom: 1.5rem;
+}
+
+.back-link {
+  position: absolute;
+  left: 0;
+}
+
+.icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: black;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.icon:hover {
+  color: #374151;
+}
+
+.order-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.order-container {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  gap: 1rem;
+}

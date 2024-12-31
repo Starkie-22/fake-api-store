@@ -1,0 +1,52 @@
+.home-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20rem;
+  margin-bottom: 1rem;
+}
+
+.home-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.search-input {
+  width: 20rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #374151;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 1.5rem;
+  min-width: max-content;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

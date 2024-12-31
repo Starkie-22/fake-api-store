@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import { Card } from "../../components/Card";
-import { ShoppingCartContext } from "../../contexts";
+import { Card } from "../../components/Card/Card";
+import { ShoppingCartContext } from "../../contexts/Contexts";
+import "./Home.css";
 
 function Home() {
   const { setSearchByTitle, filteredItems } = useContext(ShoppingCartContext);
@@ -25,18 +26,16 @@ function Home() {
 
   return (
     <>
-      <div className="flex items-center justify-center relative w-80 mb-4">
-        <h1 className="font-medium text-xl">Exclusive Products</h1>
+      <div className="home-header">
+        <h1 className="home-title">Exclusive Products</h1>
       </div>
       <input
         type="text"
         placeholder="Search a product"
-        className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none"
+        className="search-input"
         onChange={(event) => setSearchByTitle(event.target.value)}
       />
-      <div className="grid grid-cols-1 tablet:grid-cols-2 laptop:grid-cols-3 desktop:grid-cols-4 gap-6 min-w-max max-w-screen-lg">
-        {renderView()}
-      </div>
+      <div className="products-grid">{renderView()}</div>
     </>
   );
 }

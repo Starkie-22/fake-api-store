@@ -4,39 +4,21 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
+  const { item: account, saveItem: saveAccount } = useLocalStorage(
+    "account",
+    {}
+  );
+  const { item: signOut, saveItem: saveSignOut } = useLocalStorage(
+    "sign-out",
+    false
+  );
 
-  // // My account
-  const {
-    item: account,
-    saveItem: saveAccount,
-    } = useLocalStorage('account', {});
-
-  // // Sign out
-    const {
-      item: signOut,
-      saveItem: saveSignOut,
-      } = useLocalStorage('sign-out',false);
-  
-  // Product Detail · Open/Close
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-
-  // Checkout Side Menu · Open/Close
-  const [isCheckoutSideMenuOpen, setIsCheckoutSideMenuOpen] = useState(false);
-
-  // Product Detail · Show product
   const [productToShow, setProductToShow] = useState({});
-
-  // Shopping Cart · Add products to cart
   const [cartProducts, setCartProducts] = useState([]);
-
-  // Shopping Cart · Order
   const [order, setOrder] = useState([]);
-
-  // Get products
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState([]);
-
-  // Get products by title
   const [searchByTitle, setSearchByTitle] = useState("");
 
   useEffect(() => {
@@ -59,7 +41,6 @@ export const ShoppingCartProvider = ({ children }) => {
     }
   }, [items, searchByTitle]);
 
-
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -69,8 +50,6 @@ export const ShoppingCartProvider = ({ children }) => {
         setProductToShow,
         cartProducts,
         setCartProducts,
-        isCheckoutSideMenuOpen,
-        setIsCheckoutSideMenuOpen,
         order,
         setOrder,
         items,

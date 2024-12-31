@@ -1,0 +1,52 @@
+.orders-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.orders-card-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.orders-card-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-card-date,
+.orders-card-products {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.icon-small {
+  width: 1rem;
+  height: 1rem;
+  color: black;
+}
+
+.orders-card-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.total-price {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.icon-large {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: black;
+  cursor: pointer;
+}

@@ -1,5 +1,6 @@
 import { useContext, useState, useRef } from "react";
-import { ShoppingCartContext } from "../../contexts";
+import { ShoppingCartContext } from "../../contexts/Contexts";
+import "./MyAccount.css";
 
 function MyAccount() {
   const { saveAccount } = useContext(ShoppingCartContext);
@@ -20,17 +21,17 @@ function MyAccount() {
 
   const renderUserInfo = () => {
     return (
-      <div className="flex flex-col w-80">
+      <div className="user-info-container">
         <p>
-          <span className="font-light text-sm">Name: </span>
+          <span className="label">Name: </span>
           <span>{parsedAccount?.name}</span>
         </p>
         <p>
-          <span className="font-light text-sm">Email: </span>
+          <span className="label">Email: </span>
           <span>{parsedAccount?.email}</span>
         </p>
         <button
-          className="border border-black rounded-lg mt-6 py-3"
+          className="button edit-button"
           onClick={() => setView("edit-user-info")}
         >
           Edit
@@ -41,9 +42,9 @@ function MyAccount() {
 
   const renderEditUserInfo = () => {
     return (
-      <form ref={form} className="flex flex-col gap-4 w-80">
-        <div className="flex flex-col gap-1">
-          <label htmlFor="name" className="font-light text-sm">
+      <form ref={form} className="edit-form">
+        <div className="form-group">
+          <label htmlFor="name" className="label">
             Your name:
           </label>
           <input
@@ -52,11 +53,11 @@ function MyAccount() {
             name="name"
             defaultValue={parsedAccount.name}
             placeholder="Peter"
-            className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"
+            className="input"
           />
         </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="email" className="font-light text-sm">
+        <div className="form-group">
+          <label htmlFor="email" className="label">
             Your email:
           </label>
           <input
@@ -65,11 +66,11 @@ function MyAccount() {
             name="email"
             defaultValue={parsedAccount.email}
             placeholder="hi@helloworld.com"
-            className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"
+            className="input"
           />
         </div>
-        <div className="flex flex-col gap-1">
-          <label htmlFor="password" className="font-light text-sm">
+        <div className="form-group">
+          <label htmlFor="password" className="label">
             Your password:
           </label>
           <input
@@ -78,16 +79,16 @@ function MyAccount() {
             name="password"
             defaultValue={parsedAccount.password}
             placeholder="******"
-            className="rounded-lg border border-black placeholder:font-light placeholder:text-sm placeholder:text-black/60 focus:outline-none py-2 px-4"
+            className="input"
           />
         </div>
         <button
-          className="bg-black text-white w-full rounded-lg py-3"
+          className="button save-button"
           onClick={() => {
             setView("user-info"), editAccount();
           }}
         >
-          Edit
+          Save
         </button>
       </form>
     );
@@ -98,9 +99,10 @@ function MyAccount() {
 
   return (
     <>
-      <h1 className="font-medium text-xl text-center mb-6 w-80">My account</h1>
+      <h1 className="title">My Account</h1>
       {renderView()}
     </>
   );
 }
+
 export { MyAccount };

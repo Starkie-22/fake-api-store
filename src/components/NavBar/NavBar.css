@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  width: 100%;
+  padding: 1.25rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 300;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.nav-item {
+  display: none;
+}
+
+.nav-item.desktop,
+.nav-item.laptop {
+  display: block;
+}
+
+.email-info {
+  color: rgba(0, 0, 0, 0.6);
+  display: none;
+}
+
+.email-info.desktop,
+.email-info.laptop {
+  display: block;
+}
+
+.active-link {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}

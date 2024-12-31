@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { ShoppingCartContext } from "../../contexts";
-import { ShoppingCart } from "../ShoppingCart";
+import { ShoppingCartContext } from "../../contexts/Contexts";
+import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
+import "./Navbar.css";
 
 const Navbar = () => {
   const {
@@ -13,7 +14,7 @@ const Navbar = () => {
     setIsProductDetailOpen,
   } = useContext(ShoppingCartContext);
 
-  const activeStyle = "underline underline-offset-4";
+  const activeStyle = "active-link";
 
   const isUserSignOut = signOut;
   const hasUserAnAccount = Object.keys(account).length !== 0;
@@ -29,9 +30,7 @@ const Navbar = () => {
     if (hasUserAnAccount && !isUserSignOut) {
       return (
         <>
-          <li className="text-black/60 hidden tablet:hidden laptop:block desktop:block">
-            {account?.email}
-          </li>
+          <li className="email-info">{account?.email}</li>
           <li>
             <NavLink
               to="/my-orders"
@@ -75,12 +74,14 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white shadow-sm">
-      <ul className="flex items-center gap-3">
-        <li className="font-semibold text-lg">
-          <NavLink to={`${isUserSignOut ? "/sign-in" : "/"}`}>Fake API Store</NavLink>
+    <nav className="navbar">
+      <ul className="navbar-left">
+        <li className="logo">
+          <NavLink to={`${isUserSignOut ? "/sign-in" : "/"}`}>
+            Fake API Store
+          </NavLink>
         </li>
-        <li className="hidden tablet:hidden laptop:block desktop:block">
+        <li className="nav-item">
           <NavLink
             to="/"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -88,7 +89,7 @@ const Navbar = () => {
             All
           </NavLink>
         </li>
-        <li className="hidden tablet:hidden laptop:block desktop:block">
+        <li className="nav-item">
           <NavLink
             to="/men"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -96,7 +97,7 @@ const Navbar = () => {
             Men
           </NavLink>
         </li>
-        <li className="hidden tablet:hidden laptop:block desktop:block">
+        <li className="nav-item">
           <NavLink
             to="/women"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -104,7 +105,7 @@ const Navbar = () => {
             Women
           </NavLink>
         </li>
-        <li className="hidden tablet:hidden laptop:block desktop:block">
+        <li className="nav-item">
           <NavLink
             to="/electronics"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -112,7 +113,7 @@ const Navbar = () => {
             Electronics
           </NavLink>
         </li>
-        <li className="hidden tablet:hidden laptop:block desktop:block">
+        <li className="nav-item">
           <NavLink
             to="/jewelery"
             className={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -121,9 +122,9 @@ const Navbar = () => {
           </NavLink>
         </li>
       </ul>
-      <ul className="flex items-center gap-3">
+      <ul className="navbar-right">
         {renderView()}
-        <li className="flex items-center">
+        <li>
           <NavLink to="/cart">
             <ShoppingCart />
           </NavLink>
